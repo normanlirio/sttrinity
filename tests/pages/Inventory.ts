@@ -67,4 +67,20 @@ export class Inventory extends Base {
                 .click();
         }
     }
+
+    async addSingleItem(item: string) {
+        logger.info(`Adding item to cart: ${item}`);
+        await this.page.locator(Inventory.SELECTORS.inventoryItem)
+            .filter({ hasText: item })
+            .locator(Inventory.SELECTORS.addToCartButton)
+            .click();
+    }
+
+    async getSpecificAddRemoveButton(itemName: string, isAdd: boolean = true) {
+        const buttonState = isAdd ? Inventory.SELECTORS.addToCartButton : Inventory.SELECTORS.removeButton;
+        return this.page.locator(Inventory.SELECTORS.inventoryItem)
+            .filter({ hasText: itemName })
+            .locator(buttonState);
+    }
+
 }

@@ -76,7 +76,6 @@ test.describe("Checkout E2E Test Suite", () => {
 
         await test.step("Finish checkout and verify completion", async () => {
             await expect(pm.getPage()).toHaveURL(/.*checkout-complete.html/);
-            logger.info(pm.complete.completeLabel.toString());
         
             await expect(pm.complete.completeLabel).toHaveText(COMPLETE_MESSAGE_HEADER);
 

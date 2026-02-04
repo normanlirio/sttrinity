@@ -3,12 +3,12 @@ import { defineConfig, devices } from '@playwright/test';
 const ENV = process.env.ENV?.toLowerCase();
 
 function getBaseUrl(env: string | undefined): string {
-    switch (env) {
-        case 'dev':     return 'https://dev.saucedemo.com';
-        case 'staging': return 'https://staging.saucedemo.com';
-        case 'prod':
-        default:        return 'https://www.saucedemo.com';
-    }
+  switch (env) {
+    case 'dev': return 'https://dev.saucedemo.com';
+    case 'staging': return 'https://staging.saucedemo.com';
+    case 'prod':
+    default: return 'https://www.saucedemo.com';
+  }
 }
 
 const baseUrl = getBaseUrl(ENV);
@@ -31,7 +31,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-     baseURL: baseUrl,
+    baseURL: baseUrl,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -59,6 +59,25 @@ export default defineConfig({
         screenshot: 'only-on-failure',
       },
     },
+    {
+      name: 'iPhone 12',
+      use: {
+        ...devices['iPhone 12'],
+        storageState: 'tests/fixture/storageState/state.json',
+        video: 'retain-on-failure',
+        screenshot: 'only-on-failure',
+      },
+    },
+    {
+      name: 'iPhone 13',
+      use: {
+        ...devices['iPhone 13'],
+        storageState: 'tests/fixture/storageState/state.json',
+        video: 'retain-on-failure',
+        screenshot: 'only-on-failure',
+      },
+    },
+
   ]
 
 });
