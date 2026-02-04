@@ -5,7 +5,7 @@ import { Base } from "./Base";
 
 export class Complete extends Base {
 
-    static readonly SELECTORS = {
+    private static readonly SELECTORS = {
         completeLabel: '[data-test="complete-header"]',
         completeLabelSubtitle: '[data-test="complete-text"]',
         backHomeButton: 'button[data-test="back-to-products"]'

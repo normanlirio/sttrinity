@@ -5,7 +5,7 @@ import { logger } from "../utils/logger";
 
 export class Checkout extends Base {
 
-    static readonly SELECTORS = {
+    private static readonly SELECTORS = {
         firstName: '[data-test="firstName"]',
         lastName: '[data-test="lastName"]',
         postalCode: '[data-test="postalCode"]',

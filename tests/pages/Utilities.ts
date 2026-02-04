@@ -3,7 +3,7 @@ import { Page } from "@playwright/test";
 
 export class Utilities {
 
-    static readonly SELECTORS = {
+    private static readonly SELECTORS = {
         burgerMenuButton: '#react-burger-menu-btn',
         cartIcon: 'a[data-test="shopping-cart-link"]',
         logoutButton: 'a[data-test="logout-sidebar-link"]',

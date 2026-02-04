@@ -5,7 +5,7 @@ import { InventoryItem } from "../fixture/types";
 
 export class Inventory extends Base {
 
-    static readonly SELECTORS = {
+    private static readonly SELECTORS = {
         inventoryContainer: '[data-test="inventory-list"]',
         inventoryItem: '[data-test="inventory-item"]',
         inventoryItemName: '.inventory_item_name',

@@ -6,7 +6,7 @@ import { logger } from "../utils/logger";
 
 export class Overview extends Base {
 
-    static readonly SELECTORS = {
+    private static readonly SELECTORS = {
         inventoryItem: '[data-test="inventory-item"]',
         finishButton: '[data-test="finish"]',
         inventoryItemName: '[data-test="inventory-item-name"]',

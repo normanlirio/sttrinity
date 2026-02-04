@@ -4,7 +4,7 @@ import { Base } from "./Base";
 
 export class Cart extends Base {
 
-    static readonly SELECTORS = {
+    private static readonly SELECTORS = {
         inventoryItem: '[data-test="inventory-item"]',
         checkoutButton: '[data-test="checkout"]',
         continueShoppingButton: '[data-test="continue-shopping"]',
