@@ -5,6 +5,7 @@ export const INVENTORY_ITEMS = [
         itemName: "Sauce Labs Backpack",
         itemPrice: "$29.99"
     },
+    // Add more items as needed
     // {
     //     itemName: "Sauce Labs Bike Light",
     //     itemPrice: "$9.99"

@@ -11,7 +11,7 @@ npx playwright install
 ## Running Tests
 
 ```bash
-# Run all tests
+# Run all tests, headless by default
 npm t
 
 # Run tests in headed mode
