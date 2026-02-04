@@ -44,13 +44,13 @@ jobs:
           echo "Secrets are set correctly"
         env:
           STANDARD: ${{ secrets.STANDARD }}
-          ENV: ${{ variables.ENV }}
+          ENV: ${{ secrets.ENV }}
 
       - name: Run Playwright tests
         run: npm test 
         env:
-          ESTANDARD: ${{ secrets.STANDARD }}
-          ENV: ${{ variables.ENV }}
+          STANDARD: ${{ secrets.STANDARD }}
+          ENV: ${{ secrets.ENV }}
           CI: true
 
       - name: Upload Videos
