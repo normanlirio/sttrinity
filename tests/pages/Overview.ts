@@ -1,7 +1,6 @@
 import { Page } from "@playwright/test";
 import { Base } from "./Base";
 import { removeDollarSign } from "../utils/helpers";
-import { InventoryItem } from "../fixture/types";
 import { logger } from "../utils/logger";
 
 

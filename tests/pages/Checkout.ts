@@ -2,7 +2,6 @@ import { Page } from "@playwright/test";
 import { Base } from "./Base";
 import { CustomerDetails } from "../fixture/types";
 import { logger } from "../utils/logger";
-import { log } from "node:console";
 
 export class Checkout extends Base {
 

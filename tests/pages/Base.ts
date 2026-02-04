@@ -14,7 +14,7 @@ export class Base {
     async navigateTo(url: string) {
         await this.page.goto(url);
     }
-    
+
     async clickCartIcon() {
         await this.utilities.clickCartIcon();
     }

@@ -16,13 +16,13 @@ export class Complete extends Base {
     }
 
     get completeLabel() {
-        return this.page.locator(Complete.SELECTORS.completeLabel); 
+        return this.page.locator(Complete.SELECTORS.completeLabel);
     }
-    
-    get completeLabelSubtitle() {   
+
+    get completeLabelSubtitle() {
         return this.page.locator(Complete.SELECTORS.completeLabelSubtitle);
     }
-    
+
     get backHomeButton() {
         return this.page.locator(Complete.SELECTORS.backHomeButton);
     }
@@ -39,6 +39,6 @@ export class Complete extends Base {
         await this.backHomeButton.click();
     }
 
-  
+
 }
 

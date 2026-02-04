@@ -1,7 +1,7 @@
 import { Page } from "@playwright/test";
 
 
-export class Utilities  {
+export class Utilities {
 
     static readonly SELECTORS = {
         burgerMenuButton: '#react-burger-menu-btn',

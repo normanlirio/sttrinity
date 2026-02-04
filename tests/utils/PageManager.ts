@@ -13,7 +13,7 @@ import { Complete } from '../pages/Complete';
  * Provides lazy initialization and consistent access to page objects
  */
 class PageManager {
- 
+
     private _inventory?: Inventory;
     private _cart?: Cart;
     private _checkout?: Checkout;
@@ -21,7 +21,7 @@ class PageManager {
     private _complete?: Complete
     private _utilities?: Utilities;
 
-    constructor(private page: Page) {}
+    constructor(private page: Page) { }
 
     get inventory(): Inventory {
         if (!this._inventory) {

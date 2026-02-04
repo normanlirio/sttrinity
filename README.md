@@ -19,6 +19,7 @@ npm run test:headed
 ```
 
 ### Github actions - Test Report
+
 1. Create a folder in Documents
 2. Go to the repository on GitHub
 3. Click on the Actions tab

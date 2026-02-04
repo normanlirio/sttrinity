@@ -32,7 +32,7 @@ export class Cart extends Base {
     }
 
     async getAllCartItems() {
-        return await  this.page.locator(Cart.SELECTORS.inventoryItem).all();
+        return await this.page.locator(Cart.SELECTORS.inventoryItem).all();
     }
 
     async clickCheckoutButton() {
