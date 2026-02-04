@@ -1,10 +1,9 @@
 
-import { test, chromium, FullConfig } from '@playwright/test';
+import { chromium, FullConfig } from '@playwright/test';
 
 export default async function globalSetup(config: FullConfig) {
     await initLogin();
 }
-
 
 async function initLogin() {
     const browser = await chromium.launch();
@@ -20,7 +19,6 @@ async function initLogin() {
         }
     ]);
 
-    // Save to file
     await context.storageState({ path: 'tests/fixture/storageState/state.json' });
 
     await browser.close();

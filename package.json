@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-
-    "test": "ENV=prod STANDARD='standard_user' npx playwright test --headed",
+    "test": "ENV=prod STANDARD='standard_user' npx playwright test",
+    "test:headed": "ENV=prod STANDARD='standard_user' npx playwright test --headed",
+    "test:ci": "npx playwright test",
     "test:debug": "playwright test --debug",
     "test:report": "playwright show-report",
     "typecheck": "tsc --noEmit"
