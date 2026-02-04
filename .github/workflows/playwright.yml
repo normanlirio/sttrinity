@@ -1,27 +1,72 @@
-name: Playwright Tests
+name: St Trinity Playwright Tests
+
 on:
   push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
+  workflow_dispatch:
+    inputs:
+      env:
+        description: 'Environment to run tests on'
+        required: false
+        default: 'prod'
+
+permissions:
+  contents: read
+
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
+
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
-      with:
-        node-version: lts/*
-    - name: Install dependencies
-      run: npm ci
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npx playwright test
-    - uses: actions/upload-artifact@v4
-      if: ${{ !cancelled() }}
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Clear previous results
+        run: |
+          rm -rf allure-results
+          rm -rf allure-report
+          rm -rf test-results
+
+      - name: Verify Secrets
+        run: |
+          if [ -z "$STANDARD" ]; then echo "ERROR: Username secret is empty"; exit 1; fi
+          if [ -z "$ENV" ]; then echo "ERROR: ENV secret is empty"; exit 1; fi
+          echo "Secrets are set correctly"
+        env:
+          STANDARD: ${{ secrets.STANDARD }}
+          ENV: ${{ variables.ENV }}
+
+      - name: Run Playwright tests
+        run: npm test 
+        env:
+          ESTANDARD: ${{ secrets.STANDARD }}
+          ENV: ${{ variables.ENV }}
+          CI: true
+
+      - name: Upload Videos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: videos
+          path: test-results/**/*.webm
+          retention-days: 30
+          if-no-files-found: ignore
+
+      - name: Upload Screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: test-results/**/*.png
+          retention-days: 7
+          if-no-files-found: ignore
