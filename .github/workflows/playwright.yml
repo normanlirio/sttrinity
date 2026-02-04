@@ -40,11 +40,11 @@ jobs:
       - name: Verify Secrets
         run: |
           if [ -z "$STANDARD" ]; then echo "ERROR: Username secret is empty"; exit 1; fi
-          if [ -z "$ENV" ]; then echo "ERROR: ENV secret is empty"; exit 1; fi
-          echo "Secrets are set correctly"
+          if [ -z "$ENV" ]; then echo "ERROR: ENV variable is empty"; exit 1; fi
+          echo "Secrets and variables are set correctly"
         env:
           STANDARD: ${{ secrets.STANDARD }}
-          ENV: ${{ secrets.ENV }}
+          ENV: ${{ variable.ENV }}
 
       - name: Run Playwright tests
         run: npm test 
