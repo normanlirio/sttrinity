@@ -48,5 +48,5 @@ export class Logger {
 
 
 export const logger = new Logger({
-  level: LogLevel.INFO,
+  level: LogLevel.WARN,
 });

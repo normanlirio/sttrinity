@@ -20,7 +20,7 @@ export class Base {
     }
 
     async clickBurgerMenuButton() {
-      //  await this.utilities.clickBurgerMenuButton();
+        await this.utilities.clickBurgerMenuButton();
     }
 
     async getCartBadgeText() {
@@ -28,6 +28,6 @@ export class Base {
     }
 
     async clickLogoutButton() {
-        //await this.utilities.clickLogoutButton();
+        await this.utilities.clickLogoutButton();
     }
 }
