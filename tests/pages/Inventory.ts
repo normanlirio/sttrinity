@@ -80,7 +80,7 @@ export class Inventory extends Base {
         const buttonState = isAdd ? Inventory.SELECTORS.addToCartButton : Inventory.SELECTORS.removeButton;
         return this.page.locator(Inventory.SELECTORS.inventoryItem)
             .filter({ hasText: itemName })
-            .locator(buttonState);
+            .locator(buttonState + "a");
     }
 
 }
