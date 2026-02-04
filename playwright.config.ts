@@ -22,7 +22,22 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  
+  // Updated reporter configuration
+  reporter: [
+    ['list'], // Console output
+    ['html'], // HTML report
+    ['allure-playwright', {
+      outputFolder: 'allure-results',
+      detail: true,
+      suiteTitle: false,
+      environmentInfo: {
+        Environment: ENV || 'prod',
+        'Base URL': baseUrl,
+      }
+    }]
+  ],
+  
   use: {
     baseURL: baseUrl,
     trace: 'on-first-retry',
@@ -38,7 +53,6 @@ export default defineConfig({
         video: 'retain-on-failure',
         screenshot: 'only-on-failure',
       },
-
     },
 
     {
@@ -68,7 +82,5 @@ export default defineConfig({
         screenshot: 'only-on-failure',
       },
     },
-
   ]
-
 });
