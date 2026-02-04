@@ -31,12 +31,6 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Clear previous results
-        run: |
-          rm -rf allure-results
-          rm -rf allure-report
-          rm -rf test-results
-
       - name: Verify Secrets
         run: |
           if [ -z "$STANDARD" ]; then echo "ERROR: Username secret is empty"; exit 1; fi
@@ -44,13 +38,13 @@ jobs:
           echo "Secrets and variables are set correctly"
         env:
           STANDARD: ${{ secrets.STANDARD }}
-          ENV: ${{ variable.ENV }}
+          ENV: ${{ vars.ENV }}
 
       - name: Run Playwright tests
         run: npm test 
         env:
           STANDARD: ${{ secrets.STANDARD }}
-          ENV: ${{ secrets.ENV }}
+          ENV: ${{ vars.ENV }}
           CI: true
 
       - name: Upload Videos
