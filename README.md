@@ -20,30 +20,27 @@ npm run test:headed
 
 ## Github actions - Test Report
 
-1. Create a folder in Documents
-2. Go to the repository on GitHub
-3. Click on the Actions tab
-4. Click on the workflow run you want to view
-5. Scroll down to the Artifacts section at the bottom
-6. Click on allure-report to download it as a ZIP file
-7. Move the downloaded artifact to the folder that was created in step 1
-8. Extract the ZIP file
-9. Open terminal and navigate inside the extracted allure-report folder
-10. Run the command:
-   `npx allure open allure-report`
-11. Enter `y` and let it install (if not yet installed)
-
+1. Create a folder `TestReport` in your computer
+2. Go to Github Actions tab of the repository - https://github.com/normanlirio/sttrinity/actions
+3. Click on the workflow run you want to view the results of
+4. Scroll down to the Artifacts section at the bottom
+5. Click on allure-report to download it as a ZIP file to the `TestReport` folder
+6. Extract the ZIP file. The `allure-report` folder should now be in the `TestReport` folder.
+7. Open the terminal and navigate to the `TestReport` folder.
+8. Run the command:
+   `npx allure open`
+9. Enter `y` and let it install (if not yet installed)
+10. After installation, it will automatically open the test report in a browser.
 
 ### Storage State/ Authentication Strategy
 - We use Playwright's storage state to persist authenticated sessions across tests.
 - All tests now go directly to the Inventory page without going through the login page
 - The storage state is created before all tests through globalSetup
-- When tests are already in hundreds, we save execution time by not going through UI
+- When tests are already in hundreds, we save execution time by not logging in through the UI
 - We don't waste execution time on repeated authentication
 
-
 ### Trade-offs
-- Login flow not validated in every test => Mitigated by dedicated auth test suite
+- Login flow not validated in every test => Mitigated by dedicated Login test suite
 - Session expiration requires refresh logic => Handled in globalSetup with automatic renewal
 
 ### Solution
