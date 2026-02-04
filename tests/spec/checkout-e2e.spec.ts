@@ -80,10 +80,6 @@ test.describe("Checkout E2E Test Suite", () => {
             await expect(pm.complete.completeLabelSubtitle).toHaveText(
                 COMPLETE_MESSAGE_TEXT
             );
-            
-            // await pm.complete.clickBackHome();
-
-            // await expect(pm.inventory.inventoryContainer).toBeVisible();
         });
     });
 });
